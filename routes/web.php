@@ -33,8 +33,10 @@ Route::prefix('prototype')->name('prototype.')->group(function () {
     })->name('login');
     route::get('/register', function () {
         return Inertia::render('Prototype/Register');
-        // return 'Hello register';
     })->name('register');
+    route::get('/dashboard', function () {
+        return Inertia::render('Prototype/Dashboard');
+    })->name('dashboard');
 });
 
 // Route::get('/dashboard', function () {
