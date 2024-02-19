@@ -1,5 +1,6 @@
 import Sidebar from "@/Layouts/Authenticated/Sidebar";
 import Topbar from "@/Layouts/Authenticated/Topbar";
+import Featured from "@/Layouts/Authenticated/Featured";
 
 export default function Authenticated({ children }) {
     return (
@@ -14,6 +15,7 @@ export default function Authenticated({ children }) {
                         {/* Start: Topbar */}
                         <Topbar />
                         {/* Start: End topbar */}
+                        {/* <Featured /> */}
                         <main>{children}</main>
                     </div>
                 </div>
