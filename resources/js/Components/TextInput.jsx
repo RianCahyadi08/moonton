@@ -55,7 +55,7 @@ export default forwardRef(function TextInput(
             ref={input}
             autoComplete={autoComplete}
             required={required}
-            onChange={(e) => handleChange(e)}
+            // onChange={(e) => handleChange(e)}
             placeholder={placeholder}
         />
     );

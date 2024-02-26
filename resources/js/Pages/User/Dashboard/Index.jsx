@@ -7,7 +7,7 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import Flickity from "react-flickity-component";
 import MovieCard from "@/Components/MovieCard";
 
-export default function Dashboard() {
+export default function Dashboard({auth}) {
     const flickityOptions = {
         cellAlign: "left",
         contain: true,
@@ -19,7 +19,8 @@ export default function Dashboard() {
     };
 
     return (
-        <Authenticated>
+        <Authenticated user={auth.user}>
+            {/* {console.log(auth.user.name)} */}
             <Head>
                 <link
                     rel="stylesheet"
