@@ -30,7 +30,7 @@ export default function FeaturedMovies({
                     <img src="/icons/ic_star.svg" alt="" />
                     <span className="text-sm font-medium text-white mt-1">
                         {/* 4.5/5.0 */}
-                        {parseFloat(rating).toFixed(1)}/5.0
+                        {parseFloat(rating).toFixed(1)}/10
                     </span>
                 </div>
             </div>

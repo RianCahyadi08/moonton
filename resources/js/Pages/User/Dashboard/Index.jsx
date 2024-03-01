@@ -7,7 +7,10 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import Flickity from "react-flickity-component";
 import MovieCard from "@/Components/MovieCard";
 
-export default function Dashboard({auth}) {
+export default function Dashboard({auth, featureMovies, movies}) {
+
+    console.log(featureMovies[0].name);
+
     const flickityOptions = {
         cellAlign: "left",
         contain: true,
@@ -32,15 +35,15 @@ export default function Dashboard({auth}) {
                     Featured Movies
                 </div>
                 <Flickity className="gap-[30px] mb-4" options={flickityOptions}>
-                    {[1, 2, 3, 4].map((i) => (
+                    {featureMovies.map((featureMovie) => (
                         // {/* <!-- Movie Thumbnail --> */}
                         <FeaturedMovies
-                            key={i}
-                            slug="the-batman-in-love"
-                            thumbnail="/images/featured-1.png"
-                            rating={i + 1}
-                            category="Action • Horror"
-                            name={`The Batman in Love ${i}`}
+                            key={featureMovie.id}
+                            slug={featureMovie.slug}
+                            thumbnail={featureMovie.thumbnail}
+                            rating={featureMovie.rating}
+                            category={featureMovie.category}
+                            name={`${featureMovie.name}`}
                         />
                     ))}
                 </Flickity>
@@ -53,13 +56,13 @@ export default function Dashboard({auth}) {
                         options={flickityOptions}
                     >
                         {/* <!-- Movies 1 --> */}
-                        {[1, 2, 3, 4, 5, 6].map((i) => (
+                        {movies.map((movie) => (
                             <MovieCard
-                                key={i}
-                                slug="meong-golden"
-                                thumbnail="/images/browse-1.png"
-                                category="Horror • Love"
-                                name={`Meong Golden ${i}`}
+                                key={movie.id}
+                                slug={movie.slug}
+                                thumbnail={movie.thumbnail}
+                                category={movie.category}
+                                name={`${movie.name}`}
                             />
                         ))}
                     </Flickity>
