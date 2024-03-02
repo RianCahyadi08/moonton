@@ -9,8 +9,6 @@ import MovieCard from "@/Components/MovieCard";
 
 export default function Dashboard({auth, featureMovies, movies}) {
 
-    console.log(featureMovies[0].name);
-
     const flickityOptions = {
         cellAlign: "left",
         contain: true,
