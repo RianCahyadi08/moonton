@@ -8,6 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\UserSubscription;
+use Illuminate\Support\Facades\DB;
+use Auth;
+
 
 class User extends Authenticatable
 {
@@ -43,4 +49,46 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the user associated with the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function lastActiveUserSusbcription(): HasOne
+    {
+        return $this->hasOne(UserSubscription::class, 'user_id', 'id')->wherePaymentStatus('paid')->latest();
+    }
+
+    public function getIsActiveAtrribute() {
+        $dateNow = Carbon::now();
+        $dateExpired = Carbon::create($this->lastActiveUserSusbcription->expired_date);
+        return $dateNow->lessThanOrEqualTo($dateExpired);
+    }
+
+    public function getLastActiveUserSubscription() {
+        return DB::table('user_subscriptions')->join('users', 'user_subscriptions.user_id', '=', 'users.id')
+            ->join('subscription_plans', 'user_subscriptions.subscription_plan_id', '=', 'subscription_plans.id')
+            ->where('user_subscriptions.payment_status', 'paid')
+            ->first();
+    }    
+
+    public function activePlan() {
+        $getLastActiveUserSubscription = User::getLastActiveUserSubscription();
+        $activePlan = $getLastActiveUserSubscription ? $getLastActiveUserSubscription : null;
+        if (!$activePlan) {
+            return null;
+        }
+        $lastDay = Carbon::parse($activePlan->updated_at)->addMonths($activePlan->active_period_in_months);
+        $activeDay = Carbon::parse($activePlan->updated_at)->diffInDays($lastDay);
+        $remainingActiveDays = Carbon::parse($activePlan->expired_date)->diffIndays(Carbon::now());
+
+        return [
+            'active_plan' => $activePlan,
+            'last_day' => $lastDay,
+            'active_day' => $activeDay,
+            'remaining_active_days' => $remainingActiveDays
+        ];
+    }
+
 }

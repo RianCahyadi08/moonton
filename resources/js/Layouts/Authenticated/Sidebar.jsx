@@ -1,6 +1,8 @@
 import { Link } from "@inertiajs/react";
+import SubscriptionDetail from "./SubscriptionDetail";
 
-export default function Sidebar() {
+export default function Sidebar({user}) {
+    // debugger
     return (
         <>
             <aside className="fixed z-50 w-[300px] h-full">
@@ -12,7 +14,10 @@ export default function Sidebar() {
                         {/* <!-- Menu --> */}
                         <div>
                             <div className="text-gray-1 text-sm mb-4">Menu</div>
-                            <Link href={route('user.dashboard.index')} className="side-link active">
+                            <Link
+                                href={route("user.dashboard.index")}
+                                className="side-link active"
+                            >
                                 <svg
                                     width="24"
                                     height="24"
@@ -87,8 +92,13 @@ export default function Sidebar() {
                             <div className="text-gray-1 side-link mb-4">
                                 Others
                             </div>
-                            <Link href={route('prototype.subscription-plan')} className="side-link">
-                            {/* <a href="pricing.html" className="side-link"> */}
+                            <Link
+                                href={route(
+                                    "user.dashboard.subscription-plan.index"
+                                )}
+                                className="side-link"
+                            >
+                                {/* <a href="pricing.html" className="side-link"> */}
                                 <svg
                                     width="24"
                                     height="24"
@@ -103,7 +113,7 @@ export default function Sidebar() {
                                     />
                                 </svg>
                                 Payments
-                            {/* </a> */}
+                                {/* </a> */}
                             </Link>
                             <a href="#!" className="side-link">
                                 <svg
@@ -158,7 +168,24 @@ export default function Sidebar() {
                         {/* <!-- ./Others --> */}
 
                         {/* <!-- Subscription details --> */}
-                        <div className="mt-auto pr-[30px]">
+                        <SubscriptionDetail 
+                            
+                        />
+                        {/* <div class="mt-auto pr-[30px]">
+                            <div class="p-5 bg-white rounded-[25px] outline outline-1 outline-[#f1f1f1]">
+                                <div class="text-black text-lg font-semibold mb-8">
+                                    Basic
+                                </div>
+                                <div class="text-black text-sm mb-2">
+                                    5 of 30 hari
+                                </div>
+                                <div class="rounded-full w-full h-[6px] bg-[#f1f1f1]">
+                                    <div class="rounded-full h-full w-2/12 bg-alerange"></div>
+                                </div>
+                            </div>
+                        </div> */}
+
+                        {/* <div className="mt-auto pr-[30px]">
                             <div className="p-5 bg-black rounded-[25px]">
                                 <img src="/icons/ic_star-rounded.svg" alt="" />
                                 <div className="text-white text-lg font-semibold mt-4 mb-8">
@@ -171,7 +198,7 @@ export default function Sidebar() {
                                     <div className="rounded-full h-full w-9/12 bg-alerange"></div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                         {/* <!-- ./Subscription details --> */}
                     </div>
                 </div>

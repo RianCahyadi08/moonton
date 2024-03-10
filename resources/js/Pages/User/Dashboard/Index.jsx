@@ -8,6 +8,7 @@ import Flickity from "react-flickity-component";
 import MovieCard from "@/Components/MovieCard";
 
 export default function Dashboard({auth, featureMovies, movies}) {
+    // debugger
 
     const flickityOptions = {
         cellAlign: "left",
@@ -20,7 +21,7 @@ export default function Dashboard({auth, featureMovies, movies}) {
     };
 
     return (
-        <Authenticated user={auth.user}>
+        <Authenticated auth={auth.user}>
             {/* {console.log(auth.user.name)} */}
             <Head>
                 <link
