@@ -2,13 +2,13 @@ import Sidebar from "@/Layouts/Authenticated/Sidebar";
 import Topbar from "@/Layouts/Authenticated/Topbar";
 import Featured from "@/Layouts/Authenticated/Featured";
 
-export default function Authenticated({auth, children }) {
+export default function Authenticated({auth, children, activePlan }) {
     // debugger
     return (
         <>
             <div className="mx-auto max-w-screen hidden lg:block">
                 {/* Start sidebar */}
-                <Sidebar auth={auth} />
+                <Sidebar auth={auth} activePlan={activePlan} />
                 {/* End sidebar */}
                 {/* Start content */}
                 <div className="ml-[300px] px-[50px]">

@@ -1,8 +1,10 @@
 import { Link } from "@inertiajs/react";
 import SubscriptionDetail from "./SubscriptionDetail";
 
-export default function Sidebar({user}) {
+export default function Sidebar({user, auth, activePlan}) {
     // debugger
+    // console.log(activePlan);
+
     return (
         <>
             <aside className="fixed z-50 w-[300px] h-full">
@@ -168,37 +170,14 @@ export default function Sidebar({user}) {
                         {/* <!-- ./Others --> */}
 
                         {/* <!-- Subscription details --> */}
+                        {activePlan && 
                         <SubscriptionDetail 
-                            
+                            name={activePlan.active_plan.name}
+                            isPremium={activePlan.active_plan.name === 'Premium'}
+                            activeDays={activePlan.active_day}
+                            remainingActiveDays={activePlan.remaining_active_days}
                         />
-                        {/* <div class="mt-auto pr-[30px]">
-                            <div class="p-5 bg-white rounded-[25px] outline outline-1 outline-[#f1f1f1]">
-                                <div class="text-black text-lg font-semibold mb-8">
-                                    Basic
-                                </div>
-                                <div class="text-black text-sm mb-2">
-                                    5 of 30 hari
-                                </div>
-                                <div class="rounded-full w-full h-[6px] bg-[#f1f1f1]">
-                                    <div class="rounded-full h-full w-2/12 bg-alerange"></div>
-                                </div>
-                            </div>
-                        </div> */}
-
-                        {/* <div className="mt-auto pr-[30px]">
-                            <div className="p-5 bg-black rounded-[25px]">
-                                <img src="/icons/ic_star-rounded.svg" alt="" />
-                                <div className="text-white text-lg font-semibold mt-4 mb-8">
-                                    For Greatest
-                                </div>
-                                <div className="text-white text-sm mb-2">
-                                    12 of 30 hari
-                                </div>
-                                <div className="rounded-full w-full h-[6px] bg-[#333333]">
-                                    <div className="rounded-full h-full w-9/12 bg-alerange"></div>
-                                </div>
-                            </div>
-                        </div> */}
+                        }
                         {/* <!-- ./Subscription details --> */}
                     </div>
                 </div>

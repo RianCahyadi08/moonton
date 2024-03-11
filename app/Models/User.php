@@ -70,11 +70,13 @@ class User extends Authenticatable
         return DB::table('user_subscriptions')->join('users', 'user_subscriptions.user_id', '=', 'users.id')
             ->join('subscription_plans', 'user_subscriptions.subscription_plan_id', '=', 'subscription_plans.id')
             ->where('user_subscriptions.payment_status', 'paid')
+            ->where('user_subscriptions.user_id', Auth::user()->id)
             ->first();
     }    
 
     public function activePlan() {
-        $getLastActiveUserSubscription = User::getLastActiveUserSubscription();
+        $getLastActiveUserSubscription = Auth::user()->getLastActiveUserSubscription();
+        // User::getLastActiveUserSubscription();
         $activePlan = $getLastActiveUserSubscription ? $getLastActiveUserSubscription : null;
         if (!$activePlan) {
             return null;

@@ -7,7 +7,7 @@ import Authenticated from "@/Layouts/Authenticated/Index";
 import Flickity from "react-flickity-component";
 import MovieCard from "@/Components/MovieCard";
 
-export default function Dashboard({auth, featureMovies, movies}) {
+export default function Dashboard({auth, featureMovies, movies, lastActiveUserSubscription, activePlan}) {
     // debugger
 
     const flickityOptions = {
@@ -21,7 +21,7 @@ export default function Dashboard({auth, featureMovies, movies}) {
     };
 
     return (
-        <Authenticated auth={auth.user}>
+        <Authenticated auth={auth.user} activePlan={activePlan}>
             {/* {console.log(auth.user.name)} */}
             <Head>
                 <link
