@@ -1,6 +1,6 @@
 import Dropdown from "@/Components/Dropdown";
 import { useState, useRef } from "react";
-export default function Topbar({name}) {
+export default function Topbar({ name }) {
     const [dropdownOpen, setDropdownOpen] = useState(true);
     const dropdownTarget = useRef();
 

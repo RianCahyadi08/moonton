@@ -35,12 +35,14 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                // 'activePlan' => $this->activePlan(),
             ],
         ];
     }
 
     private function activePlan() {
         $activePlan = Auth::user() ? Auth::user()->lastActiveUserSusbcription() : null;
+        // dd($activePlan);
         if (!$activePlan) {
             return null;
         }
