@@ -17,7 +17,7 @@ export default function Featured() {
                             </div>
                             {/* <!-- bottom detail --> */}
                             <div className="absolute bottom-0 h-[100px] left-0 right-0 bg-gradient-to-t from-black rounded-bl-[28px]
-                                rounded-br-[28px] flex justify-between items-center px-7 h-[130px]">
+                                rounded-br-[28px] flex justify-between items-center px-7">
                                 <div>
                                     <div className="font-medium text-[22px] text-white">The Batman in Love</div>
                                     <p className="mb-0 text-white text-sm font-light">Action • Horror</p>
@@ -95,7 +95,7 @@ export default function Featured() {
                             </div>
                             {/* <!-- bottom detail --> */}
                             <div className="absolute bottom-0 h-[100px] left-0 right-0 bg-gradient-to-t from-black rounded-bl-[28px]
-                                rounded-br-[28px] flex justify-between items-center px-7 h-[130px]">
+                                rounded-br-[28px] flex justify-between items-center px-7">
                                 <div>
                                     <div className="font-medium text-[22px] text-white">The Batman in Love</div>
                                     <p className="mb-0 text-white text-sm font-light">Action • Horror</p>
