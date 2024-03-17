@@ -8,6 +8,7 @@ export default function SubscriptionCard({
     durationInMonth,
     features,
     onSelectSubscription,
+    // key,
 }) {
     return (
         <>
