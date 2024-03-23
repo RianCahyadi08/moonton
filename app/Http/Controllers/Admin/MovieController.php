@@ -21,7 +21,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('Admin/Movie/Create');
     }
 
     /**
@@ -29,7 +29,7 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**

@@ -59,6 +59,7 @@ export default function Login() {
                                         type="email"
                                         name="email"
                                         placeholder="Email Address"
+                                        className="rounded-2xl bg-form-bg py-[13px] px-7 w-full focus:outline-alerange focus:outline-none"
                                         value={data.email}
                                         isFocused={true}
                                         onChange={(e) => setData('email', e.target.value)}

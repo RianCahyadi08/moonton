@@ -33,6 +33,7 @@ export default function PrimaryButton({
             } btn-${variant} ${className}`}
             disabled={disabled}
             value={value}
+            variant={variant}
         >
             {children}
         </button>

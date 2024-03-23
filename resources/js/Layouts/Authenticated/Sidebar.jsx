@@ -20,7 +20,7 @@ export default function Sidebar({ user, auth, activePlan }) {
                         <div>
                             <div className="text-gray-1 text-sm mb-4">Menu</div>
                             {UserMenus.map(function (userMenu, index) {
-                                console.log(userMenu);
+                                // console.log(userMenu);
                                 return (
                                     <MenuItem
                                         key={`${index}-${userMenu.text}`}
